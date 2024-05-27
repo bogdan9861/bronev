@@ -75,7 +75,7 @@
       font-size: 19px;
       font-weight: 500;
 
-      padding: 0 35px;
+      padding: 0 35px 0 10px;
       margin-bottom: 25px;
 
       position: relative;
@@ -204,4 +204,17 @@
     overflow: hidden;
     border-top: 1px solid #afb2b6;
   }
+}
+
+.collapse-aside {
+  width: 80px !important;
+}
+
+.collapse-photo__wrapper {
+  padding: 20px !important;
+}
+
+.collapse-info,
+.collapse-menu {
+  display: none !important;
 }

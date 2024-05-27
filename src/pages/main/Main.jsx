@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Card, Flex } from "antd";
+import { Card } from "antd";
 import { useGetCurrentUsetQuery } from "../../app/service/user";
 
 import Header from "../../components/header/Header";
@@ -18,6 +18,8 @@ const Main = () => {
   const user = useGetCurrentUsetQuery();
   const { mode } = useParams();
   const navigate = useNavigate();
+
+  const [burgerActive, setBurgerActive] = useState(false);
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
@@ -40,15 +42,14 @@ const Main = () => {
         return <City />;
 
       default:
-        <p>Выберите вкладку</p>;
-        break;
+        return <p>Выберите вкладку</p>;
     }
   };
 
   return (
     <div className="main">
-      <Header />
-      <Aside />
+      <Header setBurgerActive={setBurgerActive} burgerActive={burgerActive} />
+      <Aside burgerActive={burgerActive} setBurgerActive={setBurgerActive} />
       <div>
         <BreadCrumbs />
         <div className="table__wrapper">

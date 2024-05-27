@@ -78,13 +78,13 @@ const Directions = () => {
           </Flex>
         </Flex>
       </Form>
-      <Table
-        dataSource={dataSource}
-        columns={columns}
-        pagination={false}
+      <Table dataSource={dataSource} columns={columns} pagination={false} />
+      <Pagination
+        total={total}
+        onChange={onPaginate}
+        current={page}
         defaultPageSize={30}
       />
-      <Pagination total={total} onChange={onPaginate} current={page} />
     </>
   );
 };

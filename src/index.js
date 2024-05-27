@@ -18,6 +18,10 @@ const root = createRoot(container);
 
 const router = createBrowserRouter([
   {
+    path: "/",
+    element: <Main />,
+  },
+  {
     path: "/:mode",
     element: <Main />,
   },

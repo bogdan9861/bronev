@@ -4,9 +4,7 @@ import { Navbar } from "react-bootstrap";
 import logo from "../../assets/images/logo.png";
 import "./Header.scss";
 
-const Header = () => {
-  const [burgetActive, setBurgerActive] = useState(false);
-
+const Header = ({ setBurgerActive, burgerActive }) => {
   return (
     <header className="header bg-dark text-white sticky-top">
       <div className="header__inner d-flex justify-content-between align-items-center w-100">
@@ -21,7 +19,7 @@ const Header = () => {
           </Navbar.Brand>
           <img
             style={{
-              display: burgetActive ? "block" : "none",
+              display: burgerActive ? "block" : "none",
               width: "150px",
               height: "40px",
             }}
@@ -30,7 +28,7 @@ const Header = () => {
           />
           <button
             className="header__burger"
-            onClick={() => setBurgerActive(!burgetActive)}
+            onClick={() => setBurgerActive(!burgerActive)}
           >
             <img
               src="https://img.icons8.com/?size=100&id=59832&format=png&color=ffffff"

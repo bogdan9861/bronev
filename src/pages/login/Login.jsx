@@ -1,9 +1,10 @@
-import { Button, Divider, Flex, Typography } from "antd";
-import { useParams, useNavigate } from "react-router-dom";
+import { Button, Divider } from "antd";
+import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
+
   useEffect(() => {
     if (window.location.href.split("token=")[1]) {
       localStorage.setItem(
@@ -20,11 +21,7 @@ const Login = () => {
   }, []);
 
   const openModal = async () => {
-    const newWindow = window.open(
-      "https://core.dev.bronew.ru/auth/sso",
-      "target",
-      "widtth=600;heigth=600"
-    );
+    const newWindow = window.open("https://core.dev.bronew.ru/auth/sso");
   };
 
   return (

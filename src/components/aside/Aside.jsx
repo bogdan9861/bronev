@@ -8,7 +8,7 @@ import { logout } from "../../features/user";
 import logo from "../../assets/images/logo.png";
 import "./Aside.scss";
 
-const Aside = () => {
+const Aside = ({ setBurgerActive, burgerActive }) => {
   const [menuOppen, setMenuOppen] = useState(false);
   const [dropdownActive, setDropdownActive] = useState(false);
 
@@ -16,22 +16,28 @@ const Aside = () => {
 
   const dispatch = useDispatch();
 
-  const loguot = () => {
+  const onLoguot = () => {
     localStorage.removeItem("token");
-    dispatch(loguot());
+    dispatch(logout());
     window.location.reload();
   };
 
   return (
-    <aside className="aside">
+    <aside className={`aside ${!burgerActive ? "collapse-aside" : ""}`}>
       <div className="aside__top-wrapper">
         <div className="aside__top">
-          <div className="aside__top-photo__wraper">
+          <div
+            className={`aside__top-photo__wraper ${
+              !burgerActive ? "collapse-photo__wrapper" : ""
+            }`}
+          >
             <img className="aside__top-photo" src={logo} alt="" />
           </div>
           <div className="aside__top-inner">
             <button
-              className="aside__top-info"
+              className={`aside__top-info ${
+                !burgerActive ? "collapse-info" : ""
+              } `}
               onClick={() => setMenuOppen(!menuOppen)}
             >
               <span className="aside__top-name">{user.username}</span>
@@ -49,7 +55,7 @@ const Aside = () => {
                 <li className="aside-dropdown__item">
                   <button
                     className="aside-dropdown__link exit"
-                    onClick={() => loguot()}
+                    onClick={() => onLoguot()}
                   >
                     Выйти
                   </button>
@@ -61,45 +67,64 @@ const Aside = () => {
       </div>
       <div className="aside__body">
         <div className="aside__body-dropdown">
-          <button
-            className={`aside__body-dropdown__btn ${
-              dropdownActive ? "active" : ""
-            }`}
-            id="dropdownMenu1"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-            onClick={() => setDropdownActive(!dropdownActive)}
-          >
-            Справочники
-          </button>
-          <ul
-            className={`aside__body-dropdown__menu ${
-              dropdownActive ? "show" : ""
-            }`}
-            aria-labelledby="dropdownMenu1"
-          >
-            <li className="aside__body-dropdown__item">
-              <Link className="aside__body-dropdown__link" to="/drivers">
-                Водители
-              </Link>
-            </li>
-            <li className="aside__body-dropdown__item">
-              <Link className="aside__body-dropdown__link" to="/directions">
-                Направления
-              </Link>
-            </li>
-            <li className="aside__body-dropdown__item">
-              <Link className="aside__body-dropdown__link" to="/people">
-                Пассажиры
-              </Link>
-            </li>
-            <li className="aside__body-dropdown__item">
-              <Link className="aside__body-dropdown__link" to="/cities">
-                Города
-              </Link>
-            </li>
-          </ul>
+          <nav>
+            <ul>
+              <li className="d-flex" onClick={() => setBurgerActive(true)}>
+                <img
+                  src="https://img.icons8.com/?size=100&id=tkhqCTJ1ic2S&format=png&color=7c7c7c"
+                  alt=""
+                  style={{ width: "25px", height: "25px" }}
+                />
+                <div className={!burgerActive ? "collapse-menu" : ""}>
+                  <button
+                    className={`aside__body-dropdown__btn ${
+                      dropdownActive ? "active" : ""
+                    }`}
+                    id="dropdownMenu1"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    onClick={() => setDropdownActive(!dropdownActive)}
+                  >
+                    Справочники
+                  </button>
+                  <ul
+                    className={`aside__body-dropdown__menu ${
+                      dropdownActive ? "show" : ""
+                    }`}
+                    aria-labelledby="dropdownMenu1"
+                  >
+                    <li className="aside__body-dropdown__item">
+                      <Link
+                        className="aside__body-dropdown__link"
+                        to="/drivers"
+                      >
+                        Водители
+                      </Link>
+                    </li>
+                    <li className="aside__body-dropdown__item">
+                      <Link
+                        className="aside__body-dropdown__link"
+                        to="/directions"
+                      >
+                        Направления
+                      </Link>
+                    </li>
+                    <li className="aside__body-dropdown__item">
+                      <Link className="aside__body-dropdown__link" to="/people">
+                        Пассажиры
+                      </Link>
+                    </li>
+                    <li className="aside__body-dropdown__item">
+                      <Link className="aside__body-dropdown__link" to="/cities">
+                        Города
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </aside>
