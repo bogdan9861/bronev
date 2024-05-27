@@ -21,7 +21,11 @@ const Login = () => {
   }, []);
 
   const openModal = async () => {
-    const newWindow = window.open("https://core.dev.bronew.ru/auth/sso");
+    const newWindow = window.open(
+      "https://core.dev.bronew.ru/auth/sso",
+      "target",
+      "widtth=600;heigth=600"
+    );
   };
 
   return (
