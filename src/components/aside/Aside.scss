@@ -1,0 +1,207 @@
+.aside {
+  width: 240px;
+  height: 100vh;
+  top: 0;
+  z-index: 20;
+  background: #fff;
+  float: left;
+
+  &__top {
+    max-width: 240px;
+    width: 100%;
+    margin-bottom: 35px;
+
+    background-image: url("https://dev.bronew.ru//images/background/user-info.jpg");
+
+    &-photo__wraper {
+      padding: 35px 30px 35px 35px;
+
+      position: relative;
+      z-index: 2;
+    }
+
+    &-photo {
+      border-radius: 100%;
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+    }
+
+    &-info {
+      position: relative;
+      border: 0;
+      text-align-last: left;
+      background-color: rgba($color: #000000, $alpha: 0.5);
+      color: #fff;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: block;
+    }
+
+    &-name {
+      padding: 6px 30px;
+      display: block;
+
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 17px;
+        right: 20px;
+        width: 8px;
+        height: 4px;
+        border-top: 0.3em solid;
+        border-right: 0.3em solid transparent;
+        border-bottom: 0;
+        border-left: 0.3em solid transparent;
+      }
+    }
+  }
+  // .aside__body
+
+  &__body {
+    padding: 0 25px;
+  }
+
+  // .aside__body-dropdown
+
+  &__body-dropdown {
+    &__btn {
+      background-color: transparent;
+      border: 0;
+
+      color: #7c7c7c;
+      font-size: 19px;
+      font-weight: 500;
+
+      padding: 0 35px;
+      margin-bottom: 25px;
+
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        right: 0;
+        width: 15px;
+        height: 15px;
+        background-image: url("https://img.icons8.com/?size=100&id=60662&format=png&color=7c7c7c");
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        transform: rotateZ(0);
+        transition: transform 0.3s;
+      }
+    }
+
+    &__menu {
+      display: flex;
+      flex-direction: column;
+      gap: 15px 0;
+      padding-left: 30px;
+
+      display: none;
+    }
+
+    &__menu.show {
+      display: flex;
+    }
+
+    &__link {
+      color: #7c7c7c;
+      font-size: 17px;
+    }
+
+    &__link:focus {
+      color: blueviolet;
+      font-weight: 500;
+    }
+  }
+}
+
+.aside__body-dropdown__btn.active::before {
+  transform: rotateZ(180deg);
+}
+
+.aside__top-wrapper {
+  position: relative;
+}
+
+.aside-dropdown {
+  width: 180px;
+  height: 100px;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+
+  &__wrapper {
+    position: absolute;
+    bottom: -25%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+  }
+
+  &__wrapper.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__item {
+  }
+
+  &__link {
+    background-color: transparent;
+    border: 0;
+    text-align-last: left;
+
+    width: 100%;
+    padding: 0.25rem 3rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    text-decoration: none;
+
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+
+      width: 20px;
+      height: 20px;
+
+      top: 6px;
+      left: 21px;
+
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+
+  &__link.profile {
+    &::before {
+      background-image: url("https://img.icons8.com/?size=100&id=23264&format=png&color=000000");
+    }
+  }
+
+  &__link.exit {
+    &::before {
+      background-image: url("https://img.icons8.com/?size=100&id=85077&format=png&color=000000");
+    }
+  }
+
+  &__divider {
+    height: 0;
+    margin: 0.5rem 0;
+    overflow: hidden;
+    border-top: 1px solid #afb2b6;
+  }
+}
